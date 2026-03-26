@@ -1,0 +1,30 @@
+https://www.onlinegdb.com/online_prolog_compiler
+Дано натуральное число n. Найти сумму первой и последней цифры этого
+числа
+
+first_number(N, D) :-
+    N < 10,
+    D = N.
+first_number(N, D) :-
+    N >= 10,
+    M is N // 10,
+    first_number(M, D).
+
+
+last_number(N, D) :-
+    D is N mod 10.
+
+sum_first_last(N, Sum) :-
+    first_number(N, First),
+    last_number(N, Last),
+    Sum is First + Last.
+
+go :-
+    write('Enter number (dot to end): '),
+    read(N),
+    sum_first_last(N, Result),
+    write('Sum first and last number: '),
+    write(Result),
+    nl.
+
+:- go.

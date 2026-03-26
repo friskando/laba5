@@ -1,0 +1,18 @@
+
+odd(X) :-
+    X mod 2 =:= 1.
+
+min_odd(List, Min) :-
+    include(odd, List, OddList),
+    OddList \= [],
+    sort(OddList, [Min | _]).
+
+go :-
+    write('Enter list example ([1, 4, 7, 9]): '),
+    read(List),
+    min_odd(List, Result),
+    write('Min odd number: '),
+    write(Result),
+    nl.
+
+:- go.
