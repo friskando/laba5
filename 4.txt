@@ -1,0 +1,47 @@
+sila(h, t).
+sila(f, t).
+sila(f, h).
+sila(j, h).
+sila(j, f).
+
+boxer(t).
+boxer(h).
+boxer(f).
+boxer(j).
+
+% Самый сильный (никто не сильнее)
+silnee(X) :-
+    boxer(X),
+    \+ (boxer(Y), sila(Y, X)).
+
+% Самый слабый (никого не сильнее)
+slabost(X) :-
+    boxer(X),
+    \+ (boxer(Y), sila(X, Y)).
+
+% Средние (не самый слабый и не самый сильный)
+sred(X) :-
+    boxer(X),
+    \+ slabost(X),      % не самый слабый
+    \+ silnee(X).       % не самый сильный
+
+slabsred(X) :-
+    slabost(X).
+
+% Получаем всех боксеров в правильном порядке
+all_boxers(Weak, MidWeak, MidStrong, Strong) :-
+    slabost(Weak),                       % самый слабый
+    findall(M, sred(M), [MidWeak, MidStrong]),  % два средних
+    silnee(Strong).                      % самый сильный
+
+go :-
+    all_boxers(Weak, MidWeak, MidStrong, Strong),
+    
+    write('1. Самый слабый: '), write(Weak), nl,
+    write('2. Средний слабый: '), write(MidWeak), nl,
+    write('3. Слабее сильного: '), write(MidStrong), nl,
+    write('4. Сильный: '), write(Strong), nl,
+    nl.
+
+    
+:- go.
