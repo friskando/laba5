@@ -56,6 +56,6 @@
 4. выодим 
 
 ### Тестирование
-<img width="827" height="442" alt="Image" src="https://github.com/user-attachments/assets/eee445f6-efe1-4c35-8ded-79ec70878570" />
+<img width="1372" height="874" alt="Image" src="https://github.com/user-attachments/assets/fa4bd0af-9035-489e-858f-dc3211b1c2d2" />
 
 
